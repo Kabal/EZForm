@@ -195,7 +195,9 @@
 
 - (void)textFieldEditingDidEnd:(id)sender
 {
-#pragma unused(sender)
+    UITextField *textField = (UITextField *)sender;
+    [self setFieldValue:textField.text canUpdateView:NO];
+    [self updateValidityIndicators];
 
     __strong EZForm *form = self.form;
     [form formFieldInputDidEnd:self];
